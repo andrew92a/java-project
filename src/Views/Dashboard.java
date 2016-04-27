@@ -1,12 +1,13 @@
 package Views;
 
+import App.Application;
+import Views.Orders.OrdersReceived;
+import Views.User.UsersList;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import App.Application;
-import Views.User.UsersList;
 
 
 public class Dashboard extends JFrame {
@@ -34,6 +35,7 @@ public class Dashboard extends JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
         employeesButton.addActionListener(onEmployeesButtonClick);
+        ordersButton.addActionListener(onOrdersButtonClick);
         exitButton.addActionListener(onExitButtonClick);
 
         authUserName.setText("Andrzej");
@@ -41,6 +43,7 @@ public class Dashboard extends JFrame {
         instance = this;
 
         setVisible(true);
+
     }
 
     /**
@@ -51,6 +54,14 @@ public class Dashboard extends JFrame {
             UsersList userListForm = new UsersList();
         }
     };
+
+    protected ActionListener onOrdersButtonClick = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            OrdersReceived repair = new OrdersReceived();
+        }
+    };
+
+
 
     /**
      * Handle Login Button Click
