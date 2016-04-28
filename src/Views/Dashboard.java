@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import App.Application;
+import Views.User.UsersList;
 
 public class Dashboard extends JFrame {
 
@@ -57,6 +59,10 @@ public class Dashboard extends JFrame {
 
     protected ActionListener onOrdersButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+
+            // Utworzenie repair (nowej instancji klasy OrdersReceived)
+            // powoduje wywołanie konstruktora tej klasy,
+            // nic sie nie działa ponieważ nie bylo tego konstruktora :P
             OrdersReceived repair = new OrdersReceived();
         }
     };
