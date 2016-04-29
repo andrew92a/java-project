@@ -1,4 +1,4 @@
-package Views.Orders;
+package Forms;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by pawel on 4/29/16.
  */
-public class OrdersAddRepair extends JFrame {
+public class OrdersAddRepairForm extends JFrame {
     private JPanel panel1;
     private JTextField textField1;
     private JTextField textField2;
@@ -14,7 +14,7 @@ public class OrdersAddRepair extends JFrame {
     private JTextArea textArea1;
     private JButton dodajNaprawęButton;
 
-    public OrdersAddRepair()
+    public OrdersAddRepairForm()
     {
         setContentPane(panel1); // ustawia glowny panel
         pack();

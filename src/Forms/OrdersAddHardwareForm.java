@@ -1,4 +1,4 @@
-package Views.Orders;
+package Forms;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by pawel on 4/29/16.
  */
-public class OrdersAddHardware extends JFrame {
+public class OrdersAddHardwareForm extends JFrame {
     private JPanel panel1;
     private JTextField textField1;
     private JTextField textField2;
@@ -25,7 +25,7 @@ public class OrdersAddHardware extends JFrame {
     private JTextField textField12;
     private JTextArea textArea1;
 
-    public OrdersAddHardware()
+    public OrdersAddHardwareForm()
     {
         setContentPane(panel1); // ustawia glowny panel
         pack();
@@ -39,7 +39,7 @@ public class OrdersAddHardware extends JFrame {
         setVisible(true);
         goToRepairButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OrdersAddRepair newrepair = new OrdersAddRepair();
+                OrdersAddRepairForm newrepair = new OrdersAddRepairForm();
             }
         });
     }

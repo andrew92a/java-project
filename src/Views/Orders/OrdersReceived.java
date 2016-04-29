@@ -1,5 +1,7 @@
 package Views.Orders;
 
+import Forms.OrdersAddClientForm;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -36,7 +38,7 @@ public class OrdersReceived extends JFrame {
 
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OrdersAdd newclient = new OrdersAdd();
+                OrdersAddClientForm newclient = new OrdersAddClientForm();
 
             }
         });
