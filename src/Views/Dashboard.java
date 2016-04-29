@@ -1,6 +1,7 @@
 package Views;
 
 import App.Application;
+import Views.Clients.ClientsList;
 import Views.Orders.OrdersReceived;
 import Views.User.UsersList;
 
@@ -43,6 +44,11 @@ public class Dashboard extends JFrame {
         instance = this;
 
         setVisible(true);
+        customersButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ClientsList clientslist = new ClientsList();
+            }
+        });
     }
 
     /**

@@ -79,7 +79,7 @@ public class OrdersAddClientForm extends JFrame {
             }
 
             if (isValid(Phone1)) {
-                sPhone1 = Phone2.getText();
+                sPhone1 = Phone1.getText();
             } else {
                 alert("Niepoprawny nr telefonu ");
                 errors = true;
