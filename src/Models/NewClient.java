@@ -17,6 +17,7 @@ public class NewClient extends Model {
         Phone1 = ph1;
     }
 
+
     public void RegisterClient()
     {
         NewClient c = new NewClient();
