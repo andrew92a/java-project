@@ -9,9 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import App.Application;
-import Views.User.UsersList;
-
 public class Dashboard extends JFrame {
 
     private JPanel dashboard;
@@ -23,6 +20,8 @@ public class Dashboard extends JFrame {
     private JButton customersButton;
     private JButton employeesButton;
     private JButton invoicesButton;
+    private JButton logOutButton;
+    private JButton configurationButton;
 
     private Dashboard instance;
 

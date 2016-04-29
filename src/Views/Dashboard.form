@@ -102,6 +102,18 @@
         <properties/>
         <border type="none"/>
         <children>
+          <component id="e73e1" class="javax.swing.JButton" binding="configurationButton">
+            <constraints/>
+            <properties>
+              <text value="Konfiguracja"/>
+            </properties>
+          </component>
+          <component id="d6856" class="javax.swing.JButton" binding="logOutButton">
+            <constraints/>
+            <properties>
+              <text value="Wyloguj"/>
+            </properties>
+          </component>
           <component id="afb78" class="javax.swing.JButton" binding="exitButton">
             <constraints/>
             <properties>

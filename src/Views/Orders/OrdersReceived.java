@@ -2,12 +2,19 @@ package Views.Orders;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 // klasa okna chyba zawsze powinna rozszeniac klase JFrame lub JWindow, inaczej chyba nie dziala
 public class OrdersReceived extends JFrame {
 
-    private JTextArea zleceniaTextArea;
     private JPanel panel1;
+    private JButton addButton;
+    private JButton wszystkieNaprawyButton;
+    private JButton ostatnieNaprawyButton;
+    private JButton naprawyWTrakcieButton;
+    private JButton szukajNaprawyButton;
+    private JTextField szybkieWyszukiwanieTextField;
 
     /**
      * To jest konstruktor klasy, wykonuje sie z chwila utowrzenia nowego objektu tej klasy
@@ -26,5 +33,12 @@ public class OrdersReceived extends JFrame {
 
         // pokazuje okno
         setVisible(true);
+
+        addButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                OrdersAdd newclient = new OrdersAdd();
+
+            }
+        });
     }
 }
