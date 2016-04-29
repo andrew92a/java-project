@@ -22,14 +22,14 @@ public class OrdersAddClientForm extends JFrame {
     private JTextField Postal;
     private JTextField City;
     private JTextField Street;
-    private JTextField BuildAddr;
-    private JTextField LocalAddr;
+    private JTextField AddrBuild;
+    private JTextField AddrLoc;
     private JTextField Phone2;
     private JButton clientButton;
     private JComboBox KindOfClient;
     private JLabel Other;
     private JPanel OtherClient;
-    private JTextField OthersClient;
+    private JTextField Description;
 
 
     public OrdersAddClientForm() {
@@ -59,9 +59,9 @@ public class OrdersAddClientForm extends JFrame {
             String sPostal = "";
             String sCity = "";
             String sStreet = "";
-            String sBuildAddr = "";
-            String sLocalAddr = "";
-            String sOthersClient = "";
+            String sAddrBuild = "";
+            String sAddrLoc = "";
+            String sDescription = "";
 
             if (isValid(FName)) {
                 sFName = FName.getText();
@@ -86,39 +86,39 @@ public class OrdersAddClientForm extends JFrame {
             }
 
             sPhone2 = Phone2.getText();
-
             sCompany = Company.getText();
-
             sNIP = NIP.getText();
-
             sPostal = Postal.getText();
-
             sCity = City.getText();
-
             sStreet = Street.getText();
+            sAddrBuild = AddrBuild.getText();
+            sAddrLoc = AddrLoc.getText();
+            sDescription = Description.getText();
 
-            sBuildAddr = BuildAddr.getText();
-
-            sLocalAddr = LocalAddr.getText();
-
-            sOthersClient = OthersClient.getText();
-
-            // String FName; // po co drugi raz deklarowac zmienne ?
-            // String SName;
-            // String Phone1;
 
             if (! errors) {
 
                 // te zmienne String sa w
                 Client client = new Client();
 
-                client.set("sFName", sFName);
-                client.set("sSName", sSName);
-                client.set("sPhone", sPhone1);
+                client.set("Name", sFName);
+                client.set("Surname", sSName);
+                client.set("Phone", sPhone1);
+                client.set("Phone2", sPhone2);
+                client.set("Company", sCompany);
+                client.set("NIP", sNIP);
+                client.set("Postal", sPostal);
+                client.set("City", sCity);
+                client.set("Street", sStreet);
+                client.set("AddrBuild", sAddrBuild);
+                client.set("AddrLoc", sAddrLoc);
+                client.set("Description", sDescription);
 
                 client.saveIt();
 
                 OrdersAddHardwareForm newHardware = new OrdersAddHardwareForm();
+                setVisible(false);
+
             }
         }
     };
