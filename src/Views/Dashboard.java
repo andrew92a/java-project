@@ -31,7 +31,7 @@ public class Dashboard extends JFrame {
 
         setContentPane(dashboard);
         pack();
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
@@ -40,11 +40,9 @@ public class Dashboard extends JFrame {
         exitButton.addActionListener(onExitButtonClick);
 
         authUserName.setText("Andrzej");
-
         instance = this;
 
         setVisible(true);
-
     }
 
     /**
@@ -59,14 +57,12 @@ public class Dashboard extends JFrame {
     protected ActionListener onOrdersButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
 
-            // Utworzenie repair (nowej instancji klasy OrdersReceived)
-            // powoduje wywołanie konstruktora tej klasy,
-            // nic sie nie działa ponieważ nie bylo tego konstruktora :P
-            OrdersReceived repair = new OrdersReceived();
+        // Utworzenie repair (nowej instancji klasy OrdersReceived)
+        // powoduje wywołanie konstruktora tej klasy,
+        // nic sie nie działa ponieważ nie bylo tego konstruktora :P
+        OrdersReceived repair = new OrdersReceived();
         }
     };
-
-
 
 
     /**
@@ -75,6 +71,7 @@ public class Dashboard extends JFrame {
     protected ActionListener onExitButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             instance.dispose();
+            System.exit(0);
         }
     };
 

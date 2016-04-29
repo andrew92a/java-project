@@ -1,13 +1,12 @@
 package Forms;
 
 
-import Models.NewClient;
+import Models.Client;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 
 
 /**
@@ -37,9 +36,7 @@ public class OrdersAddClientForm extends JFrame {
         setContentPane(panel1); // ustawia glowny panel
         pack();
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
         clientButton.addActionListener(afterClientFormSubmit);
-
 
         // to sluzy do wysirodkowania okna
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -88,32 +85,40 @@ public class OrdersAddClientForm extends JFrame {
                 errors = true;
             }
 
-                sPhone2 = Phone2.getText();
+            sPhone2 = Phone2.getText();
 
-                sCompany = Company.getText();
+            sCompany = Company.getText();
 
-                sNIP = NIP.getText();
+            sNIP = NIP.getText();
 
-                sPostal = Postal.getText();
+            sPostal = Postal.getText();
 
-                sCity = City.getText();
+            sCity = City.getText();
 
-                sStreet = Street.getText();
+            sStreet = Street.getText();
 
-                sBuildAddr = BuildAddr.getText();
+            sBuildAddr = BuildAddr.getText();
 
-                sLocalAddr = LocalAddr.getText();
+            sLocalAddr = LocalAddr.getText();
 
-                sOthersClient = OthersClient.getText();
+            sOthersClient = OthersClient.getText();
 
+            // String FName; // po co drugi raz deklarowac zmienne ?
+            // String SName;
+            // String Phone1;
 
-            if (! errors)
-            {
-                NewClient newClient = new NewClient(FName,SName,Phone1);
-                newClient.RegisterClient();
+            if (! errors) {
+
+                // te zmienne String sa w
+                Client client = new Client();
+
+                client.set("sFName", sFName);
+                client.set("sSName", sSName);
+                client.set("sPhone", sPhone1);
+
+                client.saveIt();
 
                 OrdersAddHardwareForm newHardware = new OrdersAddHardwareForm();
-
             }
         }
     };

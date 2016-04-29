@@ -64,6 +64,7 @@ public class AddUserForm extends JFrame{
                 User newUser = new User();
                 newUser.set("name", userName);
                 newUser.set("surname", userSurname);
+                newUser.set("login", userName.toLowerCase());
 
                 if (newUser.saveIt()) {
                     alert("Dodano użytkownika");
