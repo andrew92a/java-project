@@ -98,7 +98,6 @@ public class OrdersAddClientForm extends JFrame {
 
             if (! errors) {
 
-                // te zmienne String sa w
                 Client client = new Client();
 
                 client.set("Name", sFName);

@@ -1,9 +1,10 @@
 package Views.OrderPanel;
 
-import Models.Fieldconf;
+import Models.Fieldsconf;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List; //brakowalo tej paczki
 
 /**
  * Created by pawel on 4/30/16.
@@ -28,8 +29,10 @@ public class OrderPanelMain extends JFrame{
         setVisible(true);
 
 
-        List<Fieldconf> confs = Fieldconf.where("Name = 'Field1'"); //chce wyciagnac z tabeli fieldconfs rekord z kolumny values gdzie name = Field1
-        Fieldconf f1 = confs.get(0);
+        List<Fieldsconf> confs = Fieldsconf.where("Name = 'Field1'"); //chce wyciagnac z tabeli fieldconfs rekord z kolumny values gdzie name = Field1
+        // Fieldsconf f1 = confs.get(0);
+
+        Fieldsconf f1 = confs.iterator().next();
         String f1name = (String) f1.get("Value");
 
         Name.setText(f1name);
