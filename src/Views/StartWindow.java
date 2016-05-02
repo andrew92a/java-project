@@ -1,11 +1,12 @@
 package Views;
 
+import App.Application;
 import Forms.LoginForm;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import App.Application;
 
 public class StartWindow extends JFrame {
 
