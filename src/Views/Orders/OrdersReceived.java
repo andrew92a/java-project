@@ -1,6 +1,7 @@
 package Views.Orders;
 
 import Forms.OrdersAddClientForm;
+import Views.OrderPanel.OrderPanelMain;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +17,11 @@ public class OrdersReceived extends JFrame {
     private JButton ostatnieNaprawyButton;
     private JButton naprawyWTrakcieButton;
     private JButton szukajNaprawyButton;
-    private JTextField szybkieWyszukiwanieTextField;
+    private JTextField valuesearch;
+    private JButton szukajButton;
+    private JFormattedTextField numPeriodsField;
+
+
 
     /**
      * To jest konstruktor klasy, wykonuje sie z chwila utowrzenia nowego objektu tej klasy
@@ -42,5 +47,16 @@ public class OrdersReceived extends JFrame {
 
             }
         });
+
+        szukajButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+               // int SearchId = (Integer) valuesearch.getValue();
+
+                OrderPanelMain panel = new OrderPanelMain(20);
+            }
+        });
+
     }
+
 }

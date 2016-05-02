@@ -66,7 +66,6 @@ public class OrdersAddRepairForm extends JFrame {
 
             if (! errors) {
 
-                // te zmienne String sa w
                 Repair repair = new Repair();
 
                 repair.set("Defect", sDefect);
@@ -75,10 +74,8 @@ public class OrdersAddRepairForm extends JFrame {
                 repair.set("Type", sType);
                 repair.set("Cost", sCost);
 
-
-
                 repair.saveIt();
-                OrderPanelMain neworderpanel = new OrderPanelMain();
+                OrderPanelMain neworderpanel = new OrderPanelMain(20);
 
                 setVisible(false);
 

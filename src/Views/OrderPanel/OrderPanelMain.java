@@ -1,6 +1,7 @@
 package Views.OrderPanel;
 
 import Models.Fieldsconf;
+import Models.Repair;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,9 +59,15 @@ public class OrderPanelMain extends JFrame{
     private JLabel UserId;
     private JLabel Email;
     private JLabel Phone;
+    private JLabel ClientName;
+    private JTextField RepairType;
+    private JLabel ClientId;
+    private JTextField Submitter;
+    private JTextField Technican;
 
-    public OrderPanelMain()
+    public OrderPanelMain(int OrderId)
     {
+        int IdNumber=OrderId;
         setContentPane(panel1); // ustawia glowny panel
         pack();
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,18 +79,14 @@ public class OrderPanelMain extends JFrame{
         // pokazuje okno
         setVisible(true);
         getFieldName();
+        getRepair(IdNumber);
 
 
 
 
     }
 
-    private void createUIComponents()
-    {
-        // TODO: place custom component creation code here
-    }
-
-    private public void getFieldName()
+    private void getFieldName()
     {
         List<Fieldsconf> f1Conf = Fieldsconf.where("Name = 'sField1'");
         Fieldsconf f1const = f1Conf.get(0);
@@ -93,14 +96,84 @@ public class OrderPanelMain extends JFrame{
         List<Fieldsconf> f2Conf = Fieldsconf.where("Name = 'sField2'");
         Fieldsconf f2const = f1Conf.get(0);
         String f2Name = (String) f2const.get("Value");
-        f2.setText(f1Name);
+        f2.setText(f2Name);
 
         List<Fieldsconf> f3Conf = Fieldsconf.where("Name = 'sField3'");
         Fieldsconf f3const = f3Conf.get(0);
         String f3Name = (String) f3const.get("Value");
-        f3.setText(f1Name);
+        f3.setText(f3Name);
 
-        // CZY tutaj muszę dla 14 definiowanych pól pierdzielic tyle kodu?
+        List<Fieldsconf> f4Conf = Fieldsconf.where("Name = 'sField4'");
+        Fieldsconf f4const = f4Conf.get(0);
+        String f4Name = (String) f4const.get("Value");
+        f4.setText(f4Name);
+
+        List<Fieldsconf> f5Conf = Fieldsconf.where("Name = 'sField5'");
+        Fieldsconf f5const = f5Conf.get(0);
+        String f5Name = (String) f5const.get("Value");
+        f5.setText(f5Name);
+
+        List<Fieldsconf> f6Conf = Fieldsconf.where("Name = 'sField6'");
+        Fieldsconf f6const = f6Conf.get(0);
+        String f6Name = (String) f6const.get("Value");
+        f6.setText(f6Name);
+
+        List<Fieldsconf> f7Conf = Fieldsconf.where("Name = 'sField7'");
+        Fieldsconf f7const = f7Conf.get(0);
+        String f7Name = (String) f7const.get("Value");
+        f7.setText(f7Name);
+
+        List<Fieldsconf> f8Conf = Fieldsconf.where("Name = 'sField8'");
+        Fieldsconf f8const = f8Conf.get(0);
+        String f8Name = (String) f8const.get("Value");
+        f8.setText(f8Name);
+
+        List<Fieldsconf> f9Conf = Fieldsconf.where("Name = 'sField9'");
+        Fieldsconf f9const = f9Conf.get(0);
+        String f9Name = (String) f9const.get("Value");
+        f9.setText(f9Name);
+
+        List<Fieldsconf> f10Conf = Fieldsconf.where("Name = 'sField10'");
+        Fieldsconf f10const = f10Conf.get(0);
+        String f10Name = (String) f10const.get("Value");
+        f10.setText(f10Name);
+
+        List<Fieldsconf> f11Conf = Fieldsconf.where("Name = 'sField11'");
+        Fieldsconf f11const = f11Conf.get(0);
+        String f11Name = (String) f11const.get("Value");
+        f11.setText(f11Name);
+
+    }
+
+    private void getRepair(int IdNum)
+    {
+        int IdNumber = IdNum;
+        RepairId.setText("20");
+
+        List<Repair> RepairQ = Repair.where("Id = " + IdNumber);
+        Repair RepairConst = RepairQ.get(0);
+
+        String AddDateR = String.valueOf(RepairConst.get("AddDate"));
+        String EndDateR = String.valueOf(RepairConst.get("EndDate"));
+        String TypeR = String.valueOf(RepairConst.get("Type"));
+        String CostR = String.valueOf(RepairConst.get("Cost"));
+        String DefectR = String.valueOf(RepairConst.get("Defect"));
+        String CommentR = String.valueOf(RepairConst.get("Comment"));
+        String StatusR = String.valueOf(RepairConst.get("Status"));
+        String ClientIdR = String.valueOf(RepairConst.get("ClientId"));
+        String SubmitterIdR = String.valueOf(RepairConst.get("SubmitterId"));
+        String TechnicanIdR = String.valueOf(RepairConst.get("TechnicanId"));
+
+        AddDate.setText(AddDateR);
+        EndDate.setText(EndDateR);
+        RepairType.setText(TypeR);
+        Cost.setText(CostR);
+        Defect.setText(DefectR);
+        Comment.setText(CommentR);
+        Status.setText(StatusR);
+        ClientId.setText(ClientIdR);
+        Submitter.setText(SubmitterIdR);
+        Technican.setText(TechnicanIdR);
 
 
     }
