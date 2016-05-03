@@ -39,7 +39,7 @@ public class StoreCategories extends JFrame {
 
     private void fillCategoryBranch(DefaultMutableTreeNode branch, ItemsCategory category)
     {
-        List <ItemsCategory> children = ItemsCategory.where("parent_id = ?", category.getId());
+        List <ItemsCategory> children = category.getAll(ItemsCategory.class);
 
         for (ItemsCategory child : children) {
             System.out.println("Add: " + child.get("name"));

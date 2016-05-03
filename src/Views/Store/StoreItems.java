@@ -1,5 +1,7 @@
 package Views.Store;
 
+import Forms.Store.AddItemForm;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,14 +23,20 @@ public class StoreItems extends JFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         categoryButton.addActionListener(onCategoryButtonClick);
+        addItemButton.addActionListener(onAddItemButtonClick);
 
         setVisible(true);
     }
 
-
     private ActionListener onCategoryButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             StoreCategories categoriesView = new StoreCategories();
+        }
+    };
+
+    private ActionListener onAddItemButtonClick = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            AddItemForm addItemForm = new AddItemForm();
         }
     };
 }

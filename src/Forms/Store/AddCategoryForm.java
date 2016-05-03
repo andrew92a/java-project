@@ -50,8 +50,13 @@ public class AddCategoryForm extends JFrame {
             ItemsCategory category = (new ParentCategoryComboModel())
                 .getSelectedParent(parentCategorySelect.getSelectedIndex());
 
+
             ItemsCategory newCategory = new ItemsCategory();
             newCategory.set("name", categoryName.getText());
+
+            if (categoryDescription.getText().trim().length() > 0) {
+                newCategory.set("description", categoryDescription.getText());
+            }
 
             if (category != null) {
                 category.add(newCategory);

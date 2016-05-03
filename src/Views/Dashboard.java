@@ -12,8 +12,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import App.Auth.Auth;
-import Models.Store.*;
-import Views.Store.*;
 
 public class Dashboard extends JFrame {
 
