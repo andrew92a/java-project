@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.Store.StoreCategories">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <preferredSize width="800" height="400"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="9697e" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="0">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="cc73e" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="Magazyn - Kategorie Przedmiotow"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="3b662" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="West"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="ccf5b" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="West"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <scrollpane id="af15">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="61d62" class="javax.swing.JTree" binding="categoryTree">
+                    <constraints/>
+                    <properties>
+                      <preferredSize width="250" height="72"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+          <grid id="bba38" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="d93ec" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <scrollpane id="8443f">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <preferredSize width="550" height="421"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="bd790" class="javax.swing.JTable" binding="itemsTable">
+                        <constraints/>
+                        <properties/>
+                      </component>
+                    </children>
+                  </scrollpane>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="e3ec3" layout-manager="BorderLayout" hgap="10" vgap="10">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="1a594" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="North"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="2fb7f" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+                <constraints border-constraint="East"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="e8a87" class="javax.swing.JButton" binding="addCategoryButton">
+                    <constraints/>
+                    <properties>
+                      <text value="Dodaj kategorie"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="8a2ca" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="9b739" class="javax.swing.JButton" binding="backButton">
+                    <constraints/>
+                    <properties>
+                      <text value="Wróć"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

@@ -22,7 +22,6 @@ public class OrdersReceived extends JFrame {
     private JFormattedTextField numPeriodsField;
 
 
-
     /**
      * To jest konstruktor klasy, wykonuje sie z chwila utowrzenia nowego objektu tej klasy
      * i to totaj definiujesz pewne opcje i wyswietlasz okno.
@@ -51,11 +50,14 @@ public class OrdersReceived extends JFrame {
         szukajButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-               // int SearchId = (Integer) valuesearch.getValue();
+                int i = Integer.parseInt(valuesearch.getText());
 
-                OrderPanelMain panel = new OrderPanelMain(20);
+                OrderPanelMain panel = new OrderPanelMain(i);
+
             }
         });
+
+
 
     }
 

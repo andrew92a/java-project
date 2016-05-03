@@ -48,7 +48,7 @@ public class UsersList extends JFrame {
     }
 
     /**
-     * Handle Login Button Click
+     * Handle Search Button Click
      */
     protected ActionListener searchButtonActionListener = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -68,7 +68,7 @@ public class UsersList extends JFrame {
     };
 
     /**
-     * Handle Login Button Click
+     * Handle add Employee Button Click
      */
     protected ActionListener addEmployeeActionListener = new ActionListener() {
         public void actionPerformed(ActionEvent e) {

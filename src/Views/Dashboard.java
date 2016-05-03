@@ -5,13 +5,15 @@ import Models.User;
 import Models.UsersRole;
 import Views.Clients.ClientsList;
 import Views.Orders.OrdersReceived;
+import Views.Store.StoreItems;
 import Views.User.UsersList;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import App.Auth.Auth;
+import Models.Store.*;
+import Views.Store.*;
 
 public class Dashboard extends JFrame {
 
@@ -43,6 +45,7 @@ public class Dashboard extends JFrame {
         ordersButton.addActionListener(onOrdersButtonClick);
         logoutButton.addActionListener(onLogoutButtonClick);
         exitButton.addActionListener(onExitButtonClick);
+        storyButton.addActionListener(onStoreButtonClick);
 
         try {
             User loggedUser = Auth.user();
@@ -82,6 +85,11 @@ public class Dashboard extends JFrame {
         }
     };
 
+    protected ActionListener onStoreButtonClick = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            StoreItems store = new StoreItems();
+        }
+    };
 
     /**
      * Handle Exit Button Click

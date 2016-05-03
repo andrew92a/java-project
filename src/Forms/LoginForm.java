@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.Arrays;
+import static Config.Application.*;
 import App.Auth.Auth;
 
 public class LoginForm extends JFrame {

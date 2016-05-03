@@ -5,6 +5,9 @@ import java.util.List;
 import Models.User;
 import Models.UsersRole;
 
+/**
+ * Model for Users List.
+ */
 public class UserTableModel extends AbstractTableModel {
 
     private static final int LAST_NAME_COL = 0;

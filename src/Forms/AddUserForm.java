@@ -78,7 +78,7 @@ public class AddUserForm extends JFrame{
                 return;
             }
 
-            String roleId = UserRoleComboBoxModel.getSelectedRole(role.getSelectedIndex()).getId().toString();
+            String roleId = (new UserRoleComboBoxModel()).getSelectedRole(role.getSelectedIndex()).getId().toString();
 
             if (UserRepository.isEmailExists(email.getText())) {
                 alert("Do tego adresu email jest juz przypisane konto.");
@@ -111,6 +111,7 @@ public class AddUserForm extends JFrame{
             email.setText("");
         }
     };
+
     private void alert(String message) {
         JOptionPane.showMessageDialog(AddUserForm.this, message);
     }
@@ -119,31 +120,31 @@ public class AddUserForm extends JFrame{
         return filed.getText().trim().length() > 0;
     }
 
-}
-
-class UserRoleComboBoxModel extends AbstractListModel implements ComboBoxModel
-{
-    static List <UsersRole> allRoles = UsersRole.findAll();
-    String selection = null;
-
-    public Object getElementAt(int index) {
-        return allRoles.get(index).get("displayed");
-    }
-
-    public static UsersRole getSelectedRole(int index)
+    private class UserRoleComboBoxModel extends AbstractListModel implements ComboBoxModel
     {
-        return allRoles.get(index);
-    }
+        List <UsersRole> allRoles = UsersRole.findAll();
+        String selection = null;
 
-    public int getSize() {
-        return allRoles.size();
-    }
+        public Object getElementAt(int index) {
+            return allRoles.get(index).get("displayed");
+        }
 
-    public void setSelectedItem(Object anItem) {
-        selection = (String) anItem;
-    }
+        public UsersRole getSelectedRole(int index)
+        {
+            return allRoles.get(index);
+        }
 
-    public Object getSelectedItem() {
-        return selection;
+        public int getSize() {
+            return allRoles.size();
+        }
+
+        public void setSelectedItem(Object anItem) {
+            selection = (String) anItem;
+        }
+
+        public Object getSelectedItem() {
+            return selection;
+        }
     }
 }
+
