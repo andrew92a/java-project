@@ -1,17 +1,11 @@
 package Forms;
 
-import org.javalite.activejdbc.Base;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
-
-import static Config.Application.*;
-import static Config.Dev.Database.*;
-import static Config.Dev.Database.PASSWORD;
-import static Config.Dev.Database.USER;
+import App.Auth.Auth;
 
 public class LoginForm extends JFrame {
 
@@ -61,11 +55,11 @@ public class LoginForm extends JFrame {
     protected ActionListener LoginButtonActionListener = new ActionListener() {
 
         public void actionPerformed(ActionEvent e) {
-            String correctLogin     = "admin";
-            String correctPassword  = "admin";
 
-            if (loginInput.getText().equals(correctLogin)
-                    && Arrays.equals(passwordInput.getPassword(), correctPassword.toCharArray())) {
+            String login = loginInput.getText();
+            char[] pass = passwordInput.getPassword();
+
+            if (Auth.tryLogin(login, pass)) {
 
                 if (onSuccessLogin != null) {
                     onSuccessLogin.run();
@@ -117,6 +111,7 @@ public class LoginForm extends JFrame {
     public LoginForm setSuccessLoginCallback(Runnable callback) {
         this.onSuccessLogin = callback;
 
+        /*
         if (ENVIRONMENT.equals(DEV)) {
             if (onSuccessLogin != null) {
                 onSuccessLogin.run();
@@ -124,6 +119,7 @@ public class LoginForm extends JFrame {
                 return null;
             }
         }
+        */
 
         return this;
     }

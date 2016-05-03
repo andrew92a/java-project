@@ -108,7 +108,7 @@
               <text value="Konfiguracja"/>
             </properties>
           </component>
-          <component id="d6856" class="javax.swing.JButton" binding="logOutButton">
+          <component id="d6856" class="javax.swing.JButton" binding="logoutButton">
             <constraints/>
             <properties>
               <text value="Wyloguj"/>

@@ -1,6 +1,7 @@
 package App;
 
 import Views.Dashboard;
+import Views.StartWindow;
 import org.javalite.activejdbc.Base;
 import static Config.Application.*;
 import static Config.Dev.Database.*;
@@ -8,10 +9,13 @@ import static Config.Dev.Database.*;
 
 public class Application implements Runnable {
 
+    public StartWindow mainWindow;
+
     /**
      * Application instance
      */
-    public Application() {
+    public Application(StartWindow win) {
+        mainWindow = win;
         Base.open(DRIVER, TYPE + HOST + "/" +  DATABASE, USER, PASSWORD);
     }
 
@@ -25,6 +29,10 @@ public class Application implements Runnable {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void handleLogout() {
+        Base.close();
     }
 
     /**

@@ -1,6 +1,8 @@
 package Views;
 
 import App.Application;
+import Models.User;
+import Models.UsersRole;
 import Views.Clients.ClientsList;
 import Views.Orders.OrdersReceived;
 import Views.User.UsersList;
@@ -9,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import App.Auth.Auth;
 
 public class Dashboard extends JFrame {
 
@@ -21,7 +24,7 @@ public class Dashboard extends JFrame {
     private JButton customersButton;
     private JButton employeesButton;
     private JButton invoicesButton;
-    private JButton logOutButton;
+    private JButton logoutButton;
     private JButton configurationButton;
 
     private Dashboard instance;
@@ -38,9 +41,22 @@ public class Dashboard extends JFrame {
 
         employeesButton.addActionListener(onEmployeesButtonClick);
         ordersButton.addActionListener(onOrdersButtonClick);
+        logoutButton.addActionListener(onLogoutButtonClick);
         exitButton.addActionListener(onExitButtonClick);
 
-        authUserName.setText("Andrzej");
+        try {
+            User loggedUser = Auth.user();
+            if (loggedUser != null) {
+                String userName = loggedUser.get("name").toString();
+                authUserName.setText(userName);
+                String userRole = loggedUser.parent(UsersRole.class).get("displayed").toString();
+                System.out.printf("Logged as %s - [%s] \n", userName, userRole);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Unauthorized.");
+            System.exit(1);
+        }
+
         instance = this;
 
         setVisible(true);
@@ -62,17 +78,13 @@ public class Dashboard extends JFrame {
 
     protected ActionListener onOrdersButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-
-        // Utworzenie repair (nowej instancji klasy OrdersReceived)
-        // powoduje wywołanie konstruktora tej klasy,
-        // nic sie nie działa ponieważ nie bylo tego konstruktora :P
         OrdersReceived repair = new OrdersReceived();
         }
     };
 
 
     /**
-     * Handle Login Button Click
+     * Handle Exit Button Click
      */
     protected ActionListener onExitButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -81,9 +93,23 @@ public class Dashboard extends JFrame {
         }
     };
 
+    /**
+     * Handle Logout Button Click
+     */
+    protected ActionListener onLogoutButtonClick = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            Auth.logout();
+            getAppHandler().mainWindow.setVisible(true);
+            getAppHandler().mainWindow.loginForm = null;
+            getAppHandler().handleLogout();
+            instance.dispose();
+        }
+    };
+
     public void setAppHandler(Application app) {
         this.appHandler = app;
     }
+
     public Application getAppHandler() {
         return this.appHandler;
     }

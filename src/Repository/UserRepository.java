@@ -2,7 +2,7 @@ package Repository;
 
 import Models.User;
 import java.util.List;
-
+import java.util.NoSuchElementException;
 public class UserRepository extends BaseRepository {
 
     public List<User> all() {
@@ -14,10 +14,17 @@ public class UserRepository extends BaseRepository {
         return User.where("name LIKE ?", search).orderBy("name asc");
     }
 
-    public User tryLogin(String login, String pass) {
+    public static User tryLogin(String login, String pass) {
+        try {
+            List <User> u = User.where("(login = ? || email = ?) AND password = ?", login,login, pass).limit(1);
+            return u.iterator().next();
+        } catch (NoSuchElementException ex) {
+            return null;
+        }
+    }
 
-        // TODO:: ADD password field here and hash them
-        List <User> u = User.find("WHERE name = ? || email = ? AND surname = ?", login,login, pass).limit(1);
-        return u.iterator().next();
+    public static Boolean isEmailExists(String email) {
+
+       return User.count("email = ?", email) > 0;
     }
 }
