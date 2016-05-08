@@ -1,6 +1,6 @@
 package Views.Clients;
 
-import Models.Client;
+import Models.Orders.Client;
 import Repository.ClientsRepository;
 
 import javax.swing.*;

@@ -1,23 +1,25 @@
-package Views.Clients;
+package Views.Orders;
 
-import Models.Orders.Client;
+import Models.Orders.Repair;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 /**
- * Created by pawel on 4/29/16.
+ * Created by pawel on 5/3/16.
  */
-public class ClientsTableModel extends AbstractTableModel {
+public class AllRepairTableModel extends AbstractTableModel
+{
     private static final int LAST_NAME_COL = 0;
     private static final int FIRST_NAME_COL = 1;
+    private static final int SECOND_NAME_COL = 2;
 
-    private String[] columnNames = { "Last Name", "First Name" };
+    private String[] columnNames = { "Id", "Nazwa", "Statu"};
 
-    private List<Client> clients;
+    private List<Repair> repairs;
 
-    public ClientsTableModel(List<Client> clients) {
-        this.clients = clients;
+    public AllRepairTableModel(List<Repair> repairs) {
+        this.repairs = repairs;
     }
 
     public int getColumnCount() {
@@ -25,7 +27,7 @@ public class ClientsTableModel extends AbstractTableModel {
     }
 
     public int getRowCount() {
-        return clients.size();
+        return repairs.size();
     }
 
     @Override
@@ -35,15 +37,17 @@ public class ClientsTableModel extends AbstractTableModel {
 
     public Object getValueAt(int row, int col) {
 
-        Client u = clients.get(row);
+        Repair u = repairs.get(row);
 
         switch (col) {
             case LAST_NAME_COL:
-                return u.get("sFName");
+                return u.get("Id");
             case FIRST_NAME_COL:
-                return u.get("sSName");
+                return u.get("Defect");
+            case SECOND_NAME_COL:
+                return u.get("Status");
             default:
-                return u.get("sPhone");
+                return u.get("Defect");
         }
     }
 

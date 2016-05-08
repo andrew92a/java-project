@@ -1,7 +1,7 @@
 package Views.OrderPanel;
 
-import Models.Fieldsconf;
-import Models.Repair;
+import Models.Conf.Fieldsconf;
+import Models.Orders.Repair;
 
 import javax.swing.*;
 import java.awt.*;

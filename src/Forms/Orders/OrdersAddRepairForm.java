@@ -1,6 +1,6 @@
-package Forms;
+package Forms.Orders;
 
-import Models.Repair;
+import Models.Orders.Repair;
 import Views.OrderPanel.OrderPanelMain;
 
 import javax.swing.*;

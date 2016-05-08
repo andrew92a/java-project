@@ -1,4 +1,4 @@
-package Models;
+package Models.Conf;
 
 import org.javalite.activejdbc.Model;
 

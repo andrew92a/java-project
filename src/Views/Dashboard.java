@@ -1,17 +1,18 @@
 package Views;
 
 import App.Application;
+import App.Auth.Auth;
 import Models.User;
 import Models.UsersRole;
 import Views.Clients.ClientsList;
-import Views.Orders.OrdersReceived;
+import Views.Orders.OrdersMenu;
 import Views.Store.StoreItems;
 import Views.User.UsersList;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import App.Auth.Auth;
 
 public class Dashboard extends JFrame {
 
@@ -79,7 +80,7 @@ public class Dashboard extends JFrame {
 
     protected ActionListener onOrdersButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-        OrdersReceived repair = new OrdersReceived();
+        OrdersMenu repair = new OrdersMenu();
         }
     };
 

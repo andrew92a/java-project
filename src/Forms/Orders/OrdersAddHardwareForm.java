@@ -1,6 +1,6 @@
-package Forms;
+package Forms.Orders;
 
-import Models.Hardware;
+import Models.Orders.Hardware;
 
 import javax.swing.*;
 import java.awt.*;

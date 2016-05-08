@@ -1,4 +1,4 @@
-package Models;
+package Models.Orders;
 
 import org.javalite.activejdbc.Model;
 

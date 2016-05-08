@@ -1,6 +1,7 @@
 package Views.Orders;
 
-import Forms.OrdersAddClientForm;
+import Forms.Orders.OrdersAddClientForm;
+import Repository.AllRepairsRepository;
 import Views.OrderPanel.OrderPanelMain;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // klasa okna chyba zawsze powinna rozszeniac klase JFrame lub JWindow, inaczej chyba nie dziala
-public class OrdersReceived extends JFrame {
+public class OrdersMenu extends JFrame {
 
     private JPanel panel1;
     private JButton addButton;
@@ -21,13 +22,15 @@ public class OrdersReceived extends JFrame {
     private JButton szukajButton;
     private JFormattedTextField numPeriodsField;
 
+    private AllRepairsRepository allrepair;
+
 
     /**
      * To jest konstruktor klasy, wykonuje sie z chwila utowrzenia nowego objektu tej klasy
      * i to totaj definiujesz pewne opcje i wyswietlasz okno.
      *
      */
-    public OrdersReceived()
+    public OrdersMenu()
     {
         setContentPane(panel1); // ustawia glowny panel
         pack();
@@ -58,6 +61,12 @@ public class OrdersReceived extends JFrame {
         });
 
 
+        wszystkieNaprawyButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                AllRepairs allrepairs = new AllRepairs();
+            }
+        });
 
     }
 

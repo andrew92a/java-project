@@ -1,6 +1,6 @@
 package Repository;
 
-import Models.Client;
+import Models.Orders.Client;
 
 import java.util.List;
 

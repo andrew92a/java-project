@@ -1,7 +1,7 @@
-package Forms;
+package Forms.Orders;
 
 
-import Models.Client;
+import Models.Orders.Client;
 
 import javax.swing.*;
 import java.awt.*;
