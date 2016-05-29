@@ -1,16 +1,14 @@
 package Forms.Store;
 
+import Forms.BaseForm;
 import Models.Store.Item;
 import Models.Store.ItemsCategory;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
-
-public class AddItemForm extends JFrame {
+public class AddItemForm extends BaseForm {
     private JPanel panel1;
     private JButton cancelButton;
     private JButton addButton;
@@ -26,12 +24,18 @@ public class AddItemForm extends JFrame {
         instance = this;
         setContentPane(panel1);
         pack();
+        int min = 1;
+        int max = 1000000;
+        int step = 1;
+        int initValue = 1;
+        SpinnerModel model = new SpinnerNumberModel(initValue, min, max, step);
+        quantity.setModel(model);
+
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         addButton.addActionListener(onAddCategoryButtonClick);
         cancelButton.addActionListener(onCancelButtonClick);
 
         setTitle("Dodawanie nowego przedmiotu");
-
         categorySelect.setModel(new CategoryComboModel());
         categorySelect.setEditable(false);
         categorySelect.setSelectedIndex(0);
@@ -112,13 +116,5 @@ public class AddItemForm extends JFrame {
         public Object getSelectedItem() {
             return selection;
         }
-    }
-
-    private void alert(String message) {
-        JOptionPane.showMessageDialog(AddItemForm.this, message);
-    }
-
-    private Boolean isValid(JTextField filed) {
-        return filed.getText().trim().length() > 0;
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by pawel on 4/29/16.
  */
-public class ClientsRepository extends BaseRepository {
+public class ClientRepository extends BaseRepository {
 
     public List<Client> all() {
         return Client.findAll();

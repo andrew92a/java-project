@@ -3,6 +3,7 @@ package Repository;
 import Models.User;
 import java.util.List;
 import java.util.NoSuchElementException;
+
 public class UserRepository extends BaseRepository {
 
     public List<User> all() {

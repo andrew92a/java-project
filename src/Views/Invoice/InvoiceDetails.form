@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.Invoice.InvoiceDetails">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <preferredSize width="800" height="400"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="d1052" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="3b5e2" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <labelFor value="5c590"/>
+              <text value="Faktura - szczegółowe informacje"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="994a1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="b3f4a" class="javax.swing.JButton" binding="backButton">
+            <constraints/>
+            <properties>
+              <text value="Wróć"/>
+            </properties>
+          </component>
+          <hspacer id="3eb9">
+            <constraints/>
+          </hspacer>
+          <component id="69dd6" class="javax.swing.JButton" binding="refreshButton">
+            <constraints/>
+            <properties>
+              <text value="Odśwież"/>
+            </properties>
+          </component>
+          <hspacer id="e91f3">
+            <constraints/>
+          </hspacer>
+          <component id="cea8f" class="javax.swing.JButton" binding="generateButton">
+            <constraints/>
+            <properties>
+              <text value="Generuj PDF"/>
+            </properties>
+          </component>
+          <hspacer id="4ab2d">
+            <constraints/>
+          </hspacer>
+          <hspacer id="ea816">
+            <constraints/>
+          </hspacer>
+          <component id="e064" class="javax.swing.JButton" binding="addItemButton">
+            <constraints/>
+            <properties>
+              <text value="Dodaj pozycje"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <scrollpane id="5c590">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="99645" class="javax.swing.JTable" binding="invoiceItemsTable">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

@@ -1,7 +1,7 @@
 package Views.Clients;
 
 import Models.Orders.Client;
-import Repository.ClientsRepository;
+import Repository.ClientRepository;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,11 +13,11 @@ public class ClientsList extends JFrame {
     private JPanel panel1;
     private JTextField klienciTextField;
     private JTable table1;
-    private ClientsRepository client;
+    private ClientRepository client;
 
     public ClientsList()
     {
-        this.client = new ClientsRepository();
+        this.client = new ClientRepository();
 
         setContentPane(panel1);
         pack();

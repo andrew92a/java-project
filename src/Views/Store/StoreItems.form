@@ -111,6 +111,35 @@
               </vspacer>
             </children>
           </grid>
+          <grid id="1707b" layout-manager="GridBagLayout">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="7e417" layout-manager="BorderLayout" hgap="10" vgap="10">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2b381" class="javax.swing.JButton" binding="searchButton">
+                    <constraints border-constraint="East"/>
+                    <properties>
+                      <text value="Szukaj"/>
+                    </properties>
+                  </component>
+                  <component id="dfd2e" class="javax.swing.JTextField" binding="searchField">
+                    <constraints border-constraint="West"/>
+                    <properties>
+                      <preferredSize width="260" height="26"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
         </children>
       </grid>
       <grid id="16805" layout-manager="BorderLayout" hgap="0" vgap="0">

@@ -8,4 +8,8 @@ import org.javalite.activejdbc.annotations.Table;
 @Table("store_items_categories")
 public class ItemsCategory extends BaseModel {
 
+    @Override
+    public String toString() {
+        return this.get("name").toString();
+    }
 }

@@ -17,6 +17,7 @@
           <component id="cc73e" class="javax.swing.JLabel">
             <constraints/>
             <properties>
+              <labelFor value="af15"/>
               <text value="Magazyn - Kategorie Przedmiotow"/>
             </properties>
           </component>

@@ -2,11 +2,15 @@ package App.Auth;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import Models.User;
+import Models.UsersRole;
 import Repository.UserRepository;
 
 public class Auth {
+
+    public final static String ADMIN_ROLE_NAME = "admin";
 
     /**
      * Handle logged user instance
@@ -76,7 +80,7 @@ public class Auth {
     /**
      * Return logged user instance, if no user is logged returns null.
      *
-     * @return User | null
+     * @return User
      */
     public static User user() {
 

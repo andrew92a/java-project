@@ -1,0 +1,57 @@
+<div class="invoice-box">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="40"></td>
+        </tr>
+        <tr>
+            <td align="right">
+                Kielce, dn. 10.05.2016r
+            </td>
+        </tr>
+        <tr>
+            <td height="40"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <h1>
+                    Faktura nr 123/2016
+                </h1>
+            </td>
+        </tr>
+        <tr>
+            <td height="40"></td>
+        </tr>
+    </table>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="headings">
+            <th width="55%">
+                Nazwa
+            </th>
+            <th width="15%">
+                Ilosc
+            </th>
+            <th width="15%">
+                Cena / szt
+            </th>
+            <th width="15%">
+                Calosc
+            </th>
+        </tr>
+        {{items}}
+    </table>
+
+    <div class="spacer">&nbsp;</div>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="headings">
+            <td align="left" width="55%">
+               Razem
+            </td>
+            <td class="right" width="45%">
+                {{total}}
+            </td>
+        </tr>
+    </table>
+
+</div>

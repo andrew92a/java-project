@@ -59,7 +59,7 @@
             </constraints>
             <properties>
               <enabled value="true"/>
-              <text value="Search"/>
+              <text value="Szukaj"/>
             </properties>
           </component>
           <hspacer id="aa1be">

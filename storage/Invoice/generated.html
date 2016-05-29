@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Example invoice template</title>
+    <style>
+        body {
+            font: 16px "Open Sans", sans-serif;
+        }
+        .invoice-box {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #999;
+        }
+        .headings {
+            height: 35px;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-align:left;
+            background-color: #ccc;
+        }
+
+        th, td {
+            padding: 2px 4px;
+        }
+
+        .invoice-item {
+            height: 30px;
+            font-size: 13px;
+            text-transform: uppercase;
+            text-align:left;
+        }
+
+        div.spacer {
+            height: 40px;
+            clear:both;
+        }
+
+        .right {
+            text-align:right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="invoice-box">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="40"></td>
+        </tr>
+        <tr>
+            <td align="right">
+                Kielce, dn. 10.05.2016r
+            </td>
+        </tr>
+        <tr>
+            <td height="40"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <h1>
+                    Faktura nr 123/2016
+                </h1>
+            </td>
+        </tr>
+        <tr>
+            <td height="40"></td>
+        </tr>
+    </table>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="headings">
+            <th width="55%">
+                Nazwa
+            </th>
+            <th width="15%">
+                Ilosc
+            </th>
+            <th width="15%">
+                Cena / szt
+            </th>
+            <th width="15%">
+                Calosc
+            </th>
+        </tr>
+        <tr class="invoice-item">
+    <td>Komp PC i7 3.5Ghz 16GB</td>
+    <td>1</td>
+    <td>2999.0</td>
+    <td>2999.0</td>
+</tr><tr class="invoice-item">
+    <td>iMac Retina 27"</td>
+    <td>2</td>
+    <td>10999.0</td>
+    <td>21998.0</td>
+</tr><tr class="invoice-item">
+    <td>Komputer Inter PC i7 2.4Ghz 8GB</td>
+    <td>1</td>
+    <td>1999.99</td>
+    <td>1999.99</td>
+</tr>
+    </table>
+
+    <div class="spacer">&nbsp;</div>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="headings">
+            <td align="left" width="55%">
+               Razem
+            </td>
+            <td class="right" width="45%">
+                26996,99
+            </td>
+        </tr>
+    </table>
+
+</div></body>
+</html>

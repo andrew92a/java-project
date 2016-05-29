@@ -1,9 +1,10 @@
 package Views.User;
 
-import javax.swing.table.AbstractTableModel;
-import java.util.List;
 import Models.User;
 import Models.UsersRole;
+
+import javax.swing.table.AbstractTableModel;
+import java.util.List;
 
 /**
  * Model for Users List.
@@ -63,5 +64,10 @@ public class UserTableModel extends AbstractTableModel {
     @Override
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
+    }
+
+    public User getSelectedUser(int index)
+    {
+        return users.get(index);
     }
 }

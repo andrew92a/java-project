@@ -1,5 +1,6 @@
 package Forms.Store;
 
+import Forms.BaseForm;
 import Models.Store.*;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 
-public class AddCategoryForm extends JFrame {
+public class AddCategoryForm extends BaseForm {
 
     private JPanel panel1;
     private JTextField categoryName;
@@ -107,14 +108,6 @@ public class AddCategoryForm extends JFrame {
         public Object getSelectedItem() {
             return selection;
         }
-    }
-
-    private void alert(String message) {
-        JOptionPane.showMessageDialog(AddCategoryForm.this, message);
-    }
-
-    private Boolean isValid(JTextField filed) {
-        return filed.getText().trim().length() > 0;
     }
 }
 

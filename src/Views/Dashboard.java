@@ -5,6 +5,7 @@ import App.Auth.Auth;
 import Models.User;
 import Models.UsersRole;
 import Views.Clients.ClientsList;
+import Views.Invoice.InvoicesList;
 import Views.Orders.OrdersMenu;
 import Views.Store.StoreItems;
 import Views.User.UsersList;
@@ -45,6 +46,7 @@ public class Dashboard extends JFrame {
         logoutButton.addActionListener(onLogoutButtonClick);
         exitButton.addActionListener(onExitButtonClick);
         storyButton.addActionListener(onStoreButtonClick);
+        invoicesButton.addActionListener(onInvoiceButtonClick);
 
         try {
             User loggedUser = Auth.user();
@@ -70,7 +72,7 @@ public class Dashboard extends JFrame {
     }
 
     /**
-     * Handle Login Button Click
+     * Handle User List Button Click
      */
     protected ActionListener onEmployeesButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -78,15 +80,30 @@ public class Dashboard extends JFrame {
         }
     };
 
+    /**
+     * Handle Orders List Button Click
+     */
     protected ActionListener onOrdersButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
         OrdersMenu repair = new OrdersMenu();
         }
     };
 
+    /**
+     * Handle Store Items List Button Click
+     */
     protected ActionListener onStoreButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             StoreItems store = new StoreItems();
+        }
+    };
+
+    /**
+     * Handle Invoices List Button Click
+     */
+    protected ActionListener onInvoiceButtonClick = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            InvoicesList invoicesList = new InvoicesList();
         }
     };
 

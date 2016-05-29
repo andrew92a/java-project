@@ -13,10 +13,10 @@ public interface Database {
     String USER         = "lukexe_polibuder";
     String PASSWORD     = "zULhXcL1";
 
-   /*
-    String HOST         = "127.0.0.2";
+ /*
+    String HOST         = "127.0.0.1";
     String DATABASE     = "java_project";
     String USER         = "java_project";
     String PASSWORD     = "java_project";
-    */
+  */
 }

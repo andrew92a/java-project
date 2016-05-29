@@ -1,18 +1,20 @@
-package Forms;
+package Forms.User;
 
+import App.Auth.Auth;
+import Forms.BaseForm;
 import Models.User;
 import Models.UsersRole;
+import Repository.UserRepository;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import App.Auth.Auth;
-import Repository.UserRepository;
-
 import java.util.List;
 
-public class AddUserForm extends JFrame{
+
+@SuppressWarnings("ConstantConditions")
+public class AddUserForm extends BaseForm{
     private JPanel panel1;
     private JTextField surname;
     private JTextField name;
@@ -27,7 +29,6 @@ public class AddUserForm extends JFrame{
     AddUserForm instance;
 
     public AddUserForm() {
-
         instance = this;
         setContentPane(panel1);
         pack();
@@ -45,10 +46,8 @@ public class AddUserForm extends JFrame{
         setVisible(true);
     }
 
-
-
     /**
-     * Handle Login Button Click
+     * Handle Add User form
      */
     protected ActionListener afterUserFormSubmit = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -85,6 +84,12 @@ public class AddUserForm extends JFrame{
                 return;
             }
 
+            int loggedRoleId = Integer.parseInt(Auth.user().get("role_id").toString());
+            if (loggedRoleId < Integer.parseInt(roleId)) {
+                alert("Nie możesz dodawac użytkowników z wyższym priorytetem");
+                return;
+            }
+
             User newUser = new User();
             newUser.set("name", name.getText());
             newUser.set("surname", surname.getText());
@@ -102,6 +107,9 @@ public class AddUserForm extends JFrame{
         }
     };
 
+    /**
+     * Handle reset button click - reset form
+     */
     protected ActionListener onResetButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             name.setText("");
@@ -112,14 +120,9 @@ public class AddUserForm extends JFrame{
         }
     };
 
-    private void alert(String message) {
-        JOptionPane.showMessageDialog(AddUserForm.this, message);
-    }
-
-    private Boolean isValid(JTextField filed) {
-        return filed.getText().trim().length() > 0;
-    }
-
+    /**
+     * Sets up and fill UsersRole Combo Box
+     */
     private class UserRoleComboBoxModel extends AbstractListModel implements ComboBoxModel
     {
         List <UsersRole> allRoles = UsersRole.findAll();
