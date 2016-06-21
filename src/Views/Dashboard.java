@@ -7,6 +7,7 @@ import Models.UsersRole;
 import Views.Clients.ClientsList;
 import Views.Invoice.InvoicesList;
 import Views.Orders.OrdersMenu;
+import Views.Repairs.RepairsTableModel;
 import Views.Store.StoreItems;
 import Views.User.UsersList;
 
@@ -28,6 +29,7 @@ public class Dashboard extends JFrame {
     private JButton invoicesButton;
     private JButton logoutButton;
     private JButton configurationButton;
+    private JTable userRepairs;
 
     private Dashboard instance;
 
@@ -50,7 +52,12 @@ public class Dashboard extends JFrame {
 
         try {
             User loggedUser = Auth.user();
+
             if (loggedUser != null) {
+
+                RepairsTableModel userRepairsTableModel = new RepairsTableModel(loggedUser.getRepairs());
+                userRepairs.setModel(userRepairsTableModel);
+
                 String userName = loggedUser.get("name").toString();
                 authUserName.setText(userName);
                 String userRole = loggedUser.parent(UsersRole.class).get("displayed").toString();

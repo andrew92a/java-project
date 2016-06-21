@@ -47,6 +47,25 @@ public class StoreItems extends JFrame {
         List<Item> items = Item.findAll();
         tableModel = new StoreItemTableModel(items);
         table1.setModel(tableModel);
+        final StoreItems list = this;
+
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    int row = table1.rowAtPoint(evt.getPoint());
+                    int col = table1.columnAtPoint(evt.getPoint());
+
+                    if (row >= 0 && col >= 0) {
+                        int selected = table1.convertRowIndexToModel(row);
+                        Item selectedItem = list.tableModel.getSelectedItem(selected);
+
+                        ItemEdit editForm = new ItemEdit(selectedItem);
+                        instance.dispose();
+                    }
+                }
+            }
+        });
 
         setVisible(true);
     }

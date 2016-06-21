@@ -1,8 +1,10 @@
 package Models;
 
 import App.Auth.Auth;
+import Models.Orders.Repair;
 import org.javalite.activejdbc.annotations.BelongsTo;
 
+import java.util.List;
 
 @BelongsTo(parent = UsersRole.class, foreignKeyName = "role_id")
 public class User extends BaseModel {
@@ -22,4 +24,10 @@ public class User extends BaseModel {
             return false;
         }
     }
+
+    public List<Repair> getRepairs()
+    {
+        return this.getAll(Repair.class);
+    }
+
 }
