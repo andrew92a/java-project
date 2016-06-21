@@ -23,12 +23,18 @@ public class EditUserForm extends BaseForm {
     private JComboBox role;
     private JButton deleteButton;
 
-    EditUserForm instance;
-
-    UsersList view;
-
+    private EditUserForm instance;
+    private UsersList view;
     private User user;
 
+    /**
+     * Create edit user form instance
+     * @param user
+     * User instance to edit.
+     *
+     * @param viewInstance
+     * View instance of User List.
+     */
     public EditUserForm(User user, UsersList viewInstance) {
         this.user = user;
         instance = this;
@@ -56,7 +62,7 @@ public class EditUserForm extends BaseForm {
     }
 
     /**
-     * Handle Save Button Click
+     * Handle Save Button Click - save User Entry
      */
     protected ActionListener onSaveButtonClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -101,14 +107,20 @@ public class EditUserForm extends BaseForm {
         }
     };
 
+    /**
+     * Handle cancel button click
+     */
     protected ActionListener onCancelButtonClick  = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             instance.dispose();
         }
     };
+
+    /**
+     * Handle delete button click
+     */
     protected ActionListener onDeleteButtonClick  = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-
             int dialogResult = JOptionPane.showConfirmDialog (
                     null,
                     "Czy na pewno chcesz usunac użytkownika?",
@@ -123,6 +135,9 @@ public class EditUserForm extends BaseForm {
         }
     };
 
+    /**
+     * ComboBox Model for User Role ComboBox
+     */
     private class UserRoleComboBoxModel extends AbstractListModel implements ComboBoxModel
     {
         List<UsersRole> allRoles = UsersRole.findAll();

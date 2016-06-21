@@ -18,5 +18,5 @@ public interface Database {
     String DATABASE     = "java_project";
     String USER         = "java_project";
     String PASSWORD     = "java_project";
-  */
+*/
 }

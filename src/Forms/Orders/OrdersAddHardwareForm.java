@@ -95,7 +95,9 @@ public class OrdersAddHardwareForm extends JFrame {
 
                 java.util.List<Client> ClientQ2 = Client.findBySQL("select iId from clients ORDER BY iId DESC LIMIT 1");
                 Client ClientConst2 = ClientQ2.get(0);
-                String IdClient = (String) ClientConst2.get("Id");   // zamiast id dodaju null
+                Object IdClient = ClientConst2.get("iId");   // poprawione
+
+                System.out.println("Kielnt ID: " + IdClient);
 
                 // te zmienne String sa w
                 Hardware hardware = new Hardware();
