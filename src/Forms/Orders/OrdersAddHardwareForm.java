@@ -19,7 +19,6 @@ public class OrdersAddHardwareForm extends JFrame {
     private JTextField Field7;
     private JTextField Field8;
     private JTextField Field9;
-    private JTextField Field10;
     private JTextField Field11;
     private JButton hardwareButton;
     private JTextField Field1;
@@ -28,7 +27,6 @@ public class OrdersAddHardwareForm extends JFrame {
     private JTextField Field4;
     private JTextField Field5;
     private JTextArea FieldLong;
-    private JComboBox HType;
 
     public OrdersAddHardwareForm()
     {
@@ -86,8 +84,6 @@ public class OrdersAddHardwareForm extends JFrame {
             sField7 = Field7.getText();
             sField8 = Field8.getText();
             sField9 = Field9.getText();
-            sField10 = Field11.getText();
-            sField11 = Field11.getText();
 
 
 
@@ -97,7 +93,7 @@ public class OrdersAddHardwareForm extends JFrame {
                 Client ClientConst2 = ClientQ2.get(0);
                 Object IdClient = ClientConst2.get("iId");   // poprawione
 
-                System.out.println("Kielnt ID: " + IdClient);
+                //System.out.println("Kielnt ID: " + IdClient);
 
                 // te zmienne String sa w
                 Hardware hardware = new Hardware();
@@ -113,8 +109,8 @@ public class OrdersAddHardwareForm extends JFrame {
                 hardware.set("Field8", sField8);
                 hardware.set("Field9", sField9);
                 hardware.set("Field10", sField10);
-                //hardware.set("Field11", sField11);
-                hardware.set("Field11", IdClient);
+                hardware.set("Field11", sField11);
+                hardware.set("ClientId", IdClient);
 
 
                 hardware.saveIt();

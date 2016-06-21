@@ -1,6 +1,8 @@
 package Views.OrderPanel;
 
 import Models.Conf.Fieldsconf;
+import Models.Orders.Client;
+import Models.Orders.Hardware;
 import Models.Orders.Repair;
 
 import javax.swing.*;
@@ -15,18 +17,9 @@ public class OrderPanelMain extends JFrame{
 
     private JPanel panel1;
     private JButton wydrukButton;
-    private JButton podsumowanieButton;
-    private JButton notatkiButton;
-    private JButton edycjaButton;
-    private JButton EMAILButton;
     private JTextField Status;
     private JTextField HName;
     private JTextField f8r;
-    private JTextField f14r;
-    private JTextField f13r;
-    private JTextField f12r;
-    private JTextField f11r;
-    private JTextField f10r;
     private JTextField f9r;
     private JTextField f1r;
     private JTextField f2r;
@@ -51,19 +44,17 @@ public class OrderPanelMain extends JFrame{
     private JLabel f9;
     private JLabel f10;
     private JLabel f11;
-    private JLabel f12;
-    private JLabel f13;
-    private JLabel f14;
     private JLabel Surname;
     private JLabel RepairId;
     private JLabel UserId;
-    private JLabel Email;
-    private JLabel Phone;
-    private JLabel ClientName;
+    private JLabel Name;
     private JTextField RepairType;
     private JLabel ClientId;
-    private JTextField Submitter;
     private JTextField Technican;
+    private JTextField EmailBox;
+    private JTextField PhoneBox;
+    private JTextField NameBox;
+    private JTextField SurnameBox;
 
     public OrderPanelMain(int OrderId)
     {
@@ -133,22 +124,14 @@ public class OrderPanelMain extends JFrame{
         String f9Name = (String) f9const.get("Value");
         f9.setText(f9Name);
 
-        List<Fieldsconf> f10Conf = Fieldsconf.where("Name = 'sField10'");
-        Fieldsconf f10const = f10Conf.get(0);
-        String f10Name = (String) f10const.get("Value");
-        f10.setText(f10Name);
 
-        List<Fieldsconf> f11Conf = Fieldsconf.where("Name = 'sField11'");
-        Fieldsconf f11const = f11Conf.get(0);
-        String f11Name = (String) f11const.get("Value");
-        f11.setText(f11Name);
 
     }
 
     private void getRepair(int IdNum)
     {
         int IdNumber = IdNum;
-        RepairId.setText("20");
+        RepairId.setText(String.valueOf(IdNum));
 
         List<Repair> RepairQ = Repair.where("Id = " + IdNumber);
         Repair RepairConst = RepairQ.get(0);
@@ -161,7 +144,7 @@ public class OrderPanelMain extends JFrame{
         String CommentR = String.valueOf(RepairConst.get("Comment"));
         String StatusR = String.valueOf(RepairConst.get("Status"));
         String ClientIdR = String.valueOf(RepairConst.get("ClientId"));
-        String SubmitterIdR = String.valueOf(RepairConst.get("SubmitterId"));
+        String HardwareIdR = String.valueOf(RepairConst.get("HardwareId"));
         String TechnicanIdR = String.valueOf(RepairConst.get("TechnicanId"));
 
         AddDate.setText(AddDateR);
@@ -169,11 +152,49 @@ public class OrderPanelMain extends JFrame{
         RepairType.setText(TypeR);
         Cost.setText(CostR);
         Defect.setText(DefectR);
-        Comment.setText(CommentR);
         Status.setText(StatusR);
-        ClientId.setText(ClientIdR);
-        Submitter.setText(SubmitterIdR);
         Technican.setText(TechnicanIdR);
+
+        List<Hardware> HardwareQ = Hardware.where("Id = " + HardwareIdR);
+        Hardware HardwareConst = HardwareQ.get(0);
+
+        String HNameR = String.valueOf(HardwareConst.get("HName"));
+        String f1rR = String.valueOf(HardwareConst.get("Field1"));
+        String f2rR = String.valueOf(HardwareConst.get("Field2"));
+        String f3rR = String.valueOf(HardwareConst.get("Field3"));
+        String f4rR = String.valueOf(HardwareConst.get("Field4"));
+        String f5rR = String.valueOf(HardwareConst.get("Field5"));
+        String f6rR = String.valueOf(HardwareConst.get("Field6"));
+        String f7rR = String.valueOf(HardwareConst.get("Field7"));
+        String f8rR = String.valueOf(HardwareConst.get("Field8"));
+        String f9rR = String.valueOf(HardwareConst.get("Field9"));
+
+        HName.setText(HNameR);
+        f1r.setText(f1rR);
+        f2r.setText(f2rR);
+        f3r.setText(f3rR);
+        f4r.setText(f4rR);
+        f5r.setText(f5rR);
+        f6r.setText(f6rR);
+        f7r.setText(f7rR);
+        f8r.setText(f8rR);
+        f9r.setText(f9rR);
+
+        List<Client> ClientQ = Client.where("iId = " + ClientIdR);
+        Client ClientConst = ClientQ.get(0);
+
+
+        String ClientNameQ = String.valueOf(ClientConst.get("Name"));
+        String SurnameQ = String.valueOf(ClientConst.get("Surname"));
+        String PhoneQ = String.valueOf(ClientConst.get("Phone"));
+        String EmailQ = String.valueOf(ClientConst.get("Email"));
+
+        NameBox.setText(ClientNameQ);
+        SurnameBox.setText(SurnameQ);
+        PhoneBox.setText(PhoneQ);
+        EmailBox.setText(EmailQ);
+
+
 
 
     }

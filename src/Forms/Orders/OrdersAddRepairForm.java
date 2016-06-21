@@ -1,5 +1,7 @@
 package Forms.Orders;
 
+import Models.Orders.Client;
+import Models.Orders.Hardware;
 import Models.Orders.Repair;
 import Views.OrderPanel.OrderPanelMain;
 
@@ -16,9 +18,9 @@ public class OrdersAddRepairForm extends JFrame {
     private JButton repairButton;
     private JTextField Technican;
     private JTextField EndDate;
-    private JTextField Type;
     private JTextField Cost;
     private JTextField Defect;
+    private JComboBox comboBox1;
 
     public OrdersAddRepairForm()
     {
@@ -44,6 +46,7 @@ public class OrdersAddRepairForm extends JFrame {
             String sType = "";
             String sDefect = "";
             String sCost = "";
+            Integer StartStatus = 1;
 
             if (isValid(Defect)) {
             sDefect = Defect.getText();
@@ -52,9 +55,11 @@ public class OrdersAddRepairForm extends JFrame {
                 errors = true;
                 return;
             }
-            sTechnican = Technican.getText(); //TO DO: zmienic aby pobieralo wartosc z inputa
+            //sTechnican = Technican.getText(); //TO DO: zmienic aby pobieralo wartosc z inputa
             sEndDate = EndDate.getText();
-            sType = Type.getText();
+           // sType = Type.getText();
+            String Type = comboBox1.getSelectedItem().toString();
+
             sCost = Cost.getText();
 
 
@@ -66,16 +71,35 @@ public class OrdersAddRepairForm extends JFrame {
 
             if (! errors) {
 
+                java.util.List<Client> ClientQ2 = Client.findBySQL("select iId from clients ORDER BY iId DESC LIMIT 1");
+                Client ClientConst2 = ClientQ2.get(0);
+                Object IdClient = ClientConst2.get("iId");   // poprawione
+
+                java.util.List<Hardware> HardwareQ = Hardware.findBySQL("select Id from hardwares ORDER BY Id DESC LIMIT 1");
+                Hardware HardwareConst = HardwareQ.get(0);
+                Object HardwareId = HardwareConst.get("Id");   // poprawione
+
                 Repair repair = new Repair();
 
+
+
+
                 repair.set("Defect", sDefect);
-                repair.set("TechnicanId", sTechnican);
+              //  repair.set("TechnicanId", sTechnican);
                 repair.set("EndDate", sEndDate);
-                repair.set("Type", sType);
+                repair.set("Type", Type);
                 repair.set("Cost", sCost);
+                repair.set("ClientId", IdClient);
+                repair.set("HardwareId", HardwareId);
+                repair.set("Status", StartStatus);
 
                 repair.saveIt();
-                OrderPanelMain neworderpanel = new OrderPanelMain(20);
+
+                java.util.List<Repair> RepairQ = Repair.findBySQL("select Id from repairs ORDER BY Id DESC LIMIT 1");
+                Repair RepairConst = RepairQ.get(0);
+                Object RepairId = RepairConst.get("Id");
+
+                OrderPanelMain neworderpanel = new OrderPanelMain((Integer) RepairId);
 
                 setVisible(false);
 
@@ -93,6 +117,10 @@ public class OrdersAddRepairForm extends JFrame {
         return filed.getText().trim().length() > 0;
     }
 
+    private void createUIComponents()
+    {
+        // TODO: place custom component creation code here
+    }
 }
 
 

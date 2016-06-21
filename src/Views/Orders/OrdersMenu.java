@@ -15,9 +15,6 @@ public class OrdersMenu extends JFrame {
     private JPanel panel1;
     private JButton addButton;
     private JButton wszystkieNaprawyButton;
-    private JButton ostatnieNaprawyButton;
-    private JButton naprawyWTrakcieButton;
-    private JButton szukajNaprawyButton;
     private JTextField valuesearch;
     private JButton szukajButton;
     private JFormattedTextField numPeriodsField;
