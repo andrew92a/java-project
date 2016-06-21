@@ -44,8 +44,8 @@ public class AllRepairTableModel extends AbstractTableModel
                 return u.get("Id");
             case FIRST_NAME_COL:
                 return u.get("Defect");
-            case SECOND_NAME_COL:
-                return u.get("Status");
+//            case STATUS_COL:
+//                return u.get("Status");
             default:
                 return u.get("Defect");
         }

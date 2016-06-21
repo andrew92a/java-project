@@ -1,11 +1,13 @@
 package Forms.Orders;
 
+import Models.Orders.Client;
 import Models.Orders.Hardware;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * Created by pawel on 4/29/16.
@@ -91,6 +93,10 @@ public class OrdersAddHardwareForm extends JFrame {
 
             if (! errors) {
 
+                java.util.List<Client> ClientQ2 = Client.findBySQL("select iId from clients ORDER BY iId DESC LIMIT 1");
+                Client ClientConst2 = ClientQ2.get(0);
+                String IdClient = (String) ClientConst2.get("Id");   // zamiast id dodaju null
+
                 // te zmienne String sa w
                 Hardware hardware = new Hardware();
 
@@ -105,7 +111,8 @@ public class OrdersAddHardwareForm extends JFrame {
                 hardware.set("Field8", sField8);
                 hardware.set("Field9", sField9);
                 hardware.set("Field10", sField10);
-                hardware.set("Field11", sField11);
+                //hardware.set("Field11", sField11);
+                hardware.set("Field11", IdClient);
 
 
                 hardware.saveIt();

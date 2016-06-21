@@ -10,7 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class InvoiceDetails extends JFrame {
+public class InvoiceDetails extends JFrame
+{
     private JPanel panel1;
     private JButton backButton;
     private JButton addItemButton;
@@ -34,7 +35,7 @@ public class InvoiceDetails extends JFrame {
         refreshButton.addActionListener(onRefreshButtonClick);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         fillInvoiceDetailsTable();
         setVisible(true);
     }
@@ -42,8 +43,10 @@ public class InvoiceDetails extends JFrame {
     /**
      * Handle add item button click
      */
-    protected ActionListener onAddButtonClick = new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
+    protected ActionListener onAddButtonClick = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent e)
+        {
             AddInvoiceItem addItemForm = new AddInvoiceItem(instance.invoice);
         }
     };
@@ -51,8 +54,10 @@ public class InvoiceDetails extends JFrame {
     /**
      * Handle create button click
      */
-    protected ActionListener onBackButtonClick = new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
+    protected ActionListener onBackButtonClick = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent e)
+        {
             instance.dispose();
         }
     };
@@ -60,8 +65,10 @@ public class InvoiceDetails extends JFrame {
     /**
      * Handle create button click
      */
-    protected ActionListener onRefreshButtonClick = new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
+    protected ActionListener onRefreshButtonClick = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent e)
+        {
             fillInvoiceDetailsTable();
         }
     };
@@ -71,11 +78,15 @@ public class InvoiceDetails extends JFrame {
      * Handle generate button click
      */
     protected ActionListener onGenerateButtonClick = new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            try {
+        public void actionPerformed(ActionEvent e)
+        {
+            try
+            {
 
                 PDF.Invoice.generate(instance.invoice);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ex.printStackTrace();
             }
         }

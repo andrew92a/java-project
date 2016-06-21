@@ -26,7 +26,7 @@ public class OrdersAddClientForm extends JFrame {
     private JTextField AddrLoc;
     private JTextField Phone2;
     private JButton clientButton;
-    private JComboBox KindOfClient;
+   // private JComboBox KindOfClient;
     private JLabel Other;
     private JPanel OtherClient;
     private JTextField Description;
@@ -114,6 +114,8 @@ public class OrdersAddClientForm extends JFrame {
                 client.set("Description", sDescription);
 
                 client.saveIt();
+
+
 
                 OrdersAddHardwareForm newHardware = new OrdersAddHardwareForm();
                 setVisible(false);
