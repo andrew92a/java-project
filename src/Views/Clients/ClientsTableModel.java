@@ -5,14 +5,15 @@ import Models.Orders.Client;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
-/**
- * Created by pawel on 4/29/16.
- */
 public class ClientsTableModel extends AbstractTableModel {
-    private static final int LAST_NAME_COL = 0;
-    private static final int FIRST_NAME_COL = 1;
 
-    private String[] columnNames = { "Last Name", "First Name" };
+    private static final int INDEX_COL = 0;
+    private static final int FIRST_NAME_COL = 1;
+    private static final int LAST_NAME_COL = 2;
+    private static final int PHONE_COL = 3;
+    private static final int CREATED_AT_COL = 4;
+
+    private String[] columnNames = { "Nr", "Imie", "Nazwisko", "Telefon", "Utworzony" };
 
     private List<Client> clients;
 
@@ -38,17 +39,18 @@ public class ClientsTableModel extends AbstractTableModel {
         Client u = clients.get(row);
 
         switch (col) {
+            case INDEX_COL:
+                return row + 1;
             case LAST_NAME_COL:
-                return u.get("sFName");
+                return u.get("Name");
             case FIRST_NAME_COL:
-                return u.get("sSName");
+                return u.get("Surname");
+            case PHONE_COL:
+                return u.get("Phone");
+            case CREATED_AT_COL:
+                return u.get("created_at");
             default:
-                return u.get("sPhone");
+                return "";
         }
-    }
-
-    @Override
-    public Class getColumnClass(int c) {
-        return getValueAt(0, c).getClass();
     }
 }

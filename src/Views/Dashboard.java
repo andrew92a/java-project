@@ -62,7 +62,9 @@ public class Dashboard extends JFrame {
                 authUserName.setText(userName);
                 String userRole = loggedUser.parent(UsersRole.class).get("displayed").toString();
                 System.out.printf("Logged as %s - [%s] \n", userName, userRole);
+
             }
+
         } catch (NullPointerException e) {
             System.out.println("Unauthorized.");
             System.exit(1);
