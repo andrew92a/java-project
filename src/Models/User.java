@@ -27,7 +27,7 @@ public class User extends BaseModel {
 
     public List<Repair> getRepairs()
     {
-        return this.getAll(Repair.class);
+        return this.get(Repair.class, "Status IS NULL");
     }
 
 }

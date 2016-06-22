@@ -53,7 +53,7 @@ public class RepairsTableModel extends AbstractTableModel {
         return getValueAt(0, c).getClass();
     }
 
-    public Repair getSelectedUser(int index)
+    public Repair getSelectedRepair(int index)
     {
         return repairs.get(index);
     }

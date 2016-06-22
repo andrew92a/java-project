@@ -2,6 +2,7 @@ package Views;
 
 import App.Application;
 import App.Auth.Auth;
+import Models.Orders.Repair;
 import Models.User;
 import Models.UsersRole;
 import Views.Clients.ClientsList;
@@ -15,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 
 public class Dashboard extends JFrame {
 
@@ -32,6 +34,8 @@ public class Dashboard extends JFrame {
     private JTable userRepairs;
 
     private Dashboard instance;
+
+    private User logged;
 
     private Application appHandler;
 
@@ -51,16 +55,44 @@ public class Dashboard extends JFrame {
         invoicesButton.addActionListener(onInvoiceButtonClick);
 
         try {
-            User loggedUser = Auth.user();
+            logged = Auth.user();
+            if (logged != null) {
 
-            if (loggedUser != null) {
-
-                RepairsTableModel userRepairsTableModel = new RepairsTableModel(loggedUser.getRepairs());
+                final RepairsTableModel userRepairsTableModel = new RepairsTableModel(logged.getRepairs());
                 userRepairs.setModel(userRepairsTableModel);
 
-                String userName = loggedUser.get("name").toString();
+                userRepairs.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        if (evt.getClickCount() == 2) {
+                            int row = userRepairs.rowAtPoint(evt.getPoint());
+                            int col = userRepairs.columnAtPoint(evt.getPoint());
+                            if (row >= 0 && col >= 0) {
+                                int selected = userRepairs.convertRowIndexToModel(row);
+                                Repair selectedRepair = userRepairsTableModel.getSelectedRepair(selected);
+
+                                int dialogResult = JOptionPane.showConfirmDialog (
+                                        null,
+                                        "Czy na pewno chcesz oznaczyc zadanie jako wykonane?",
+                                        "Potwierdz swoja decyzje",
+                                        JOptionPane.YES_NO_OPTION);
+                                if(dialogResult == JOptionPane.YES_OPTION) {
+
+                                    selectedRepair.set("Status", 1);
+                                    selectedRepair.saveIt();
+
+                                    userRepairs.setModel(
+                                        new RepairsTableModel(instance.logged.getRepairs())
+                                    );
+                                }
+                            }
+                        }
+                    }
+                });
+
+                String userName = logged.get("name").toString();
                 authUserName.setText(userName);
-                String userRole = loggedUser.parent(UsersRole.class).get("displayed").toString();
+                String userRole = logged.parent(UsersRole.class).get("displayed").toString();
                 System.out.printf("Logged as %s - [%s] \n", userName, userRole);
 
             }
