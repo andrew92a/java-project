@@ -44,18 +44,18 @@ public class AllRepairs extends JFrame
         repairstable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                if (evt.getClickCount() == 2) {
-                    int row = repairstable.rowAtPoint(evt.getPoint());
-                    int col = repairstable.columnAtPoint(evt.getPoint());
-                    if (row >= 0 && col >= 0) {
-                        int selected = repairstable.convertRowIndexToModel(row);
-                        Repair selectedRepair = repairmodel.getSelectedRepair(selected);
+            if (evt.getClickCount() == 2) {
+                int row = repairstable.rowAtPoint(evt.getPoint());
+                int col = repairstable.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    int selected = repairstable.convertRowIndexToModel(row);
+                    Repair selectedRepair = repairmodel.getSelectedRepair(selected);
 
-                        OrderPanelMain orderpanel = new OrderPanelMain(
-                            Integer.parseInt(selectedRepair.getId().toString())
-                        );
-                    }
+                    OrderPanelMain orderpanel = new OrderPanelMain(
+                        Integer.parseInt(selectedRepair.getId().toString())
+                    );
                 }
+            }
             }
         });
     }

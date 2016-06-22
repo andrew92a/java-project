@@ -71,5 +71,4 @@ public class AllRepairTableModel extends AbstractTableModel
         return repairs.get(index);
     }
 
-
 }
