@@ -2,13 +2,13 @@ package Views.Invoice;
 
 
 import Models.Invoice.Invoice;
+import Models.Orders.Client;
 import Models.User;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class InvoiceTableModel extends AbstractTableModel {
-
 
     private static final int ID_COL = 0;
     private static final int NUMBER_COL = 1;
@@ -43,17 +43,29 @@ public class InvoiceTableModel extends AbstractTableModel {
         Invoice u = invoices.get(row);
 
         switch (col) {
+
             case ID_COL:
                 return (row + 1);
+
             case NUMBER_COL:
                 return u.get("number");
+
             case NAME_COL:
                 return u.get("name");
+
             case USER_COL:
                 return u.parent(User.class).get("name").toString() + " " + u.parent(User.class).get("surname").toString();
+
             case CUSTOMER_COL:
-                return "-";
-                //return u.parent(Customer.class).get("name").toString() + u.parent(Customer.class).get("surname").toString();
+                if (u.parent(Client.class) != null) {
+                    return
+                        u.parent(Client.class).get("Name").toString()
+                        + " " +
+                        u.parent(Client.class).get("Surname").toString();
+                } else {
+                    return "-";
+                }
+
             case CREATED_COL:
                 return u.get("created_at");
             default:

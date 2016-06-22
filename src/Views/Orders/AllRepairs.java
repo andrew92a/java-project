@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
 
 
@@ -32,7 +31,7 @@ public class AllRepairs extends JFrame
 
         List <Repair> repairs = Repair.findAll();
 
-        AllRepairTableModel repairmodel = new AllRepairTableModel(repairs);
+        final AllRepairTableModel repairmodel = new AllRepairTableModel(repairs);
         repairstable.setModel(repairmodel);
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,8 +49,11 @@ public class AllRepairs extends JFrame
                     int col = repairstable.columnAtPoint(evt.getPoint());
                     if (row >= 0 && col >= 0) {
                         int selected = repairstable.convertRowIndexToModel(row);
-                        //Repair selectedRepair = List.re;     //list.invoiceTableModel.getSelectedInvoice(selected);
-                        OrderPanelMain orderpanel = new OrderPanelMain(selectedRepair);
+                        Repair selectedRepair = repairmodel.getSelectedRepair(selected);
+
+                        OrderPanelMain orderpanel = new OrderPanelMain(
+                            Integer.parseInt(selectedRepair.getId().toString())
+                        );
                     }
                 }
             }

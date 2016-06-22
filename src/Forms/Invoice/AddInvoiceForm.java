@@ -4,11 +4,13 @@ package Forms.Invoice;
 import App.Auth.Auth;
 import Forms.BaseForm;
 import Models.Invoice.Invoice;
+import Models.Orders.Client;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 @SuppressWarnings("ConstantConditions")
 public class AddInvoiceForm extends BaseForm {
@@ -33,6 +35,8 @@ public class AddInvoiceForm extends BaseForm {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         backButton.addActionListener(onBackButtonClick);
         addButton.addActionListener(onCreateButtonClick);
+        InvoiceClientComboBoxModel clientModel = new InvoiceClientComboBoxModel();
+        customerSelect.setModel(clientModel);
         setTitle("Tworzenie nowej faktury");
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -71,8 +75,11 @@ public class AddInvoiceForm extends BaseForm {
             newInvoice.set("name", name.getText());
             newInvoice.set("number", number.getText());
             newInvoice.set("place", place.getText());
-            newInvoice.set("customer_id", 1);
             newInvoice.set("user_id", Auth.user().get("id"));
+
+            Integer index = customerSelect.getSelectedIndex();
+            Client selectedClient = (new InvoiceClientComboBoxModel()).getSelectedClient(index);
+            selectedClient.add(newInvoice);
 
             if (newInvoice.saveIt()) {
                 alert("Dodano nowa fakture");
@@ -83,4 +90,33 @@ public class AddInvoiceForm extends BaseForm {
         }
     };
 
+
+    /**
+     * Sets up and fill UsersRole Combo Box
+     */
+    private class InvoiceClientComboBoxModel extends AbstractListModel implements ComboBoxModel
+    {
+        List <Client> clients = Client.findAll();
+        String selection = null;
+
+        public Object getElementAt(int index) {
+            return clients.get(index).get("Name") + " " +   clients.get(index).get("Surname");
+        }
+
+        public int getSize() {
+            return clients.size();
+        }
+
+        public void setSelectedItem(Object anItem) {
+            selection = (String) anItem;
+        }
+
+        public Client getSelectedClient(int index) {
+            return clients.get(index);
+        }
+
+        public Object getSelectedItem() {
+            return selection;
+        }
+    }
 }
