@@ -4,6 +4,7 @@ import Models.Conf.Fieldsconf;
 import Models.Orders.Client;
 import Models.Orders.Hardware;
 import Models.Orders.Repair;
+import Models.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +30,6 @@ public class OrderPanelMain extends JFrame{
     private JTextField f6r;
     private JTextField f7r;
     private JTextField AddDate;
-    private JTextField EndDate;
     private JTextField Cost;
     private JTextArea Defect;
     private JTextArea Comment;
@@ -126,29 +126,37 @@ public class OrderPanelMain extends JFrame{
     private void getRepair(int IdNum)
     {
         int IdNumber = IdNum;
+        String statusname ="Nowa";
         RepairId.setText(String.valueOf(IdNum));
 
         List<Repair> RepairQ = Repair.where("Id = " + IdNumber);
         Repair RepairConst = RepairQ.get(0);
 
         String AddDateR = String.valueOf(RepairConst.get("AddDate"));
-        String EndDateR = String.valueOf(RepairConst.get("EndDate"));
         String TypeR = String.valueOf(RepairConst.get("Type"));
         String CostR = String.valueOf(RepairConst.get("Cost"));
         String DefectR = String.valueOf(RepairConst.get("Defect"));
-        String CommentR = String.valueOf(RepairConst.get("Comment"));
         String StatusR = String.valueOf(RepairConst.get("Status"));
         String ClientIdR = String.valueOf(RepairConst.get("ClientId"));
         String HardwareIdR = String.valueOf(RepairConst.get("HardwareId"));
         String TechnicanIdR = String.valueOf(RepairConst.get("TechnicanId"));
 
+        List<User> UserQ = User.where("Id = " + TechnicanIdR);
+        User UserConst = UserQ.get(0);
+        String TechnicanName = String.valueOf(UserConst.get("name"));
+        String TechnicanSurname = String.valueOf(UserConst.get("surname"));
+
+
         AddDate.setText(AddDateR);
-        EndDate.setText(EndDateR);
         RepairType.setText(TypeR);
         Cost.setText(CostR);
         Defect.setText(DefectR);
-        Status.setText(StatusR);
-        Technican.setText(TechnicanIdR);
+        if (StatusR == "1")
+        {
+            statusname = "Ukonczona";
+        }
+        Status.setText(statusname);
+        Technican.setText(TechnicanName + " " + TechnicanSurname);
 
         List<Hardware> HardwareQ = Hardware.where("Id = " + HardwareIdR);
         Hardware HardwareConst = HardwareQ.get(0);

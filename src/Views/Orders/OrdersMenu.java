@@ -50,9 +50,9 @@ public class OrdersMenu extends JFrame {
         szukajButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-                int i = Integer.parseInt(valuesearch.getText());
+                int repairnum = Integer.parseInt(numPeriodsField.getText());
 
-                OrderPanelMain panel = new OrderPanelMain(i);
+                OrderPanelMain panel = new OrderPanelMain(repairnum);
 
             }
         });

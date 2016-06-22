@@ -10,6 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by pawel on 4/29/16.
@@ -44,11 +47,9 @@ public class OrdersAddRepairForm extends JFrame {
             Boolean errors = false;
 
             String sTechnican = "";
-            String sEndDate = "";
             String sType = "";
             String sDefect = "";
             String sCost = "";
-            Integer StartStatus = 1;
 
             if (isValid(Defect)) {
             sDefect = Defect.getText();
@@ -58,8 +59,6 @@ public class OrdersAddRepairForm extends JFrame {
                 return;
             }
             //sTechnican = Technican.getText(); //TO DO: zmienic aby pobieralo wartosc z inputa
-            sEndDate = EndDate.getText();
-           // sType = Type.getText();
             String Type = comboBox1.getSelectedItem().toString();
 
             sCost = Cost.getText();
@@ -78,12 +77,15 @@ public class OrdersAddRepairForm extends JFrame {
                 Repair repair = new Repair();
 
                 repair.set("Defect", sDefect);
-                repair.set("EndDate", sEndDate);
                 repair.set("Type", Type);
                 repair.set("Cost", sCost);
                 repair.set("ClientId", IdClient);
                 repair.set("HardwareId", HardwareId);
-                repair.set("Status", StartStatus);
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                Date date = new Date();
+
+                repair.set("AddDate", dateFormat.format(date));
+                repair.set("HardwareId", HardwareId);
 
                 User selectedUser = (new UserComboModel()).getSelectedUser(
                     employeeComboBox.getSelectedIndex()
