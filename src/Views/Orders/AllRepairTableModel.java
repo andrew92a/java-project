@@ -66,5 +66,10 @@ public class AllRepairTableModel extends AbstractTableModel
                 return "";
         }
     }
+    public Repair getSelectedRepair(int index)
+    {
+        return repairs.get(index);
+    }
+
 
 }

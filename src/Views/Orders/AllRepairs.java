@@ -1,11 +1,14 @@
 package Views.Orders;
 
 import Models.Orders.Repair;
+import Views.OrderPanel.OrderPanelMain;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 
@@ -39,6 +42,20 @@ public class AllRepairs extends JFrame
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         setVisible(true);
 
+        repairstable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    int row = repairstable.rowAtPoint(evt.getPoint());
+                    int col = repairstable.columnAtPoint(evt.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        int selected = repairstable.convertRowIndexToModel(row);
+                        //Repair selectedRepair = List.re;     //list.invoiceTableModel.getSelectedInvoice(selected);
+                        OrderPanelMain orderpanel = new OrderPanelMain(selectedRepair);
+                    }
+                }
+            }
+        });
     }
 
     private java.util.List<Repair> getLimitRepair() {
