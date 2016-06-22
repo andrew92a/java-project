@@ -11,7 +11,7 @@ public class RepairsTableModel extends AbstractTableModel {
     private static final int NAME_COL = 1;
     private static final int COST_COL = 2;
 
-    private String[] columnNames = { "Nr", "Nazwa", "Koszt" };
+    private String[] columnNames = { "Nr", "Imie", "Nazwisko" };
 
     private List<Repair> repairs;
 
@@ -44,7 +44,7 @@ public class RepairsTableModel extends AbstractTableModel {
             case COST_COL:
                 return u.get("Cost");
             default:
-                return "-";
+                return "";
         }
     }
 

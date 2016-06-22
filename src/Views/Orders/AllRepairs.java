@@ -1,12 +1,13 @@
 package Views.Orders;
 
 import Models.Orders.Repair;
-import Repository.AllRepairsRepository;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
 
 /**
  * Created by pawel on 5/8/16.
@@ -14,20 +15,25 @@ import java.awt.event.ActionListener;
 public class AllRepairs extends JFrame
 {
     private JPanel panel1;
-    private JTable table1;
-    private JButton ActiveRepairsButton;
+    private JTable repairstable;
+    private JButton cancelButtonRepairs;
 
-    private AllRepairsRepository allrepair;
+    private AllRepairs instance;
 
 
     public AllRepairs()
     {
-        this.allrepair = new AllRepairsRepository();
+        instance = this;
 
         setContentPane(panel1);
         pack();
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
+        List <Repair> repairs = Repair.findAll();
+        AllRepairTableModel repairmodel = new AllRepairTableModel(repairs);
+        repairstable.setModel(repairmodel);
+
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        cancelButtonRepairs.addActionListener(onCancelButtonRepairsClick);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -35,27 +41,21 @@ public class AllRepairs extends JFrame
         java.util.List<Repair> allrepairs = Repair.findAll();
 
         AllRepairTableModel u = new AllRepairTableModel(allrepairs);
-        this.table1.setModel(u);
+        this.repairstable.setModel(u);
 
         setVisible(true);
 
-        ActiveRepairsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                java.util.List<Repair> allrepairs;
-
-
-                allrepairs = allrepair.activeRepair();
-
-                AllRepairTableModel u = new AllRepairTableModel(allrepairs);
-                table1.setModel(u);
-            }
-        });
     }
 
 
     private java.util.List<Repair> getLimitRepair() {
         return Repair.findAll().limit(10);
     }
+
+    protected ActionListener onCancelButtonRepairsClick = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+       //     repairepository.dispose();
+        }
+    };
 
 }

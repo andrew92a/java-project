@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class AllRepairTableModel extends AbstractTableModel
 {
-    private static final int LAST_NAME_COL = 0;
+    private static final int ID_COL = 0;
     private static final int FIRST_NAME_COL = 1;
     private static final int SECOND_NAME_COL = 2;
 
@@ -40,14 +40,14 @@ public class AllRepairTableModel extends AbstractTableModel
         Repair u = repairs.get(row);
 
         switch (col) {
-            case LAST_NAME_COL:
+            case ID_COL:
                 return u.get("Id");
             case FIRST_NAME_COL:
-                return u.get("Defect");
-//            case STATUS_COL:
-//                return u.get("Status");
+                return u.get("Name");
+            case SECOND_NAME_COL:
+                return u.get("Surname");
             default:
-                return u.get("Defect");
+                return "";
         }
     }
 
