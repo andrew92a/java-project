@@ -11,7 +11,7 @@ public class RepairsTableModel extends AbstractTableModel {
     private static final int NAME_COL = 1;
     private static final int COST_COL = 2;
 
-    private String[] columnNames = { "Nr", "Imie", "Nazwisko" };
+    private String[] columnNames = { "Nr", "Usterka", "Koszt" };
 
     private List<Repair> repairs;
 

@@ -24,11 +24,11 @@ public class AllRepairs extends JFrame
     public AllRepairs()
     {
         instance = this;
-
         setContentPane(panel1);
         pack();
 
         List <Repair> repairs = Repair.findAll();
+
         AllRepairTableModel repairmodel = new AllRepairTableModel(repairs);
         repairstable.setModel(repairmodel);
 
@@ -37,16 +37,9 @@ public class AllRepairs extends JFrame
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-
-        java.util.List<Repair> allrepairs = Repair.findAll();
-
-        AllRepairTableModel u = new AllRepairTableModel(allrepairs);
-        this.repairstable.setModel(u);
-
         setVisible(true);
 
     }
-
 
     private java.util.List<Repair> getLimitRepair() {
         return Repair.findAll().limit(10);
@@ -54,7 +47,7 @@ public class AllRepairs extends JFrame
 
     protected ActionListener onCancelButtonRepairsClick = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-       //     repairepository.dispose();
+            instance.dispose();
         }
     };
 
